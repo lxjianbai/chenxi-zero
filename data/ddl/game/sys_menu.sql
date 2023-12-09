@@ -1,0 +1,22 @@
+CREATE TABLE `sys_menu` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父级id',
+  `type` tinyint(4) unsigned NOT NULL DEFAULT '1' COMMENT '类型 1=目录 2=菜单 2=按钮',
+  `path` varchar(20) NOT NULL DEFAULT '' COMMENT '路由路径',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '路由名称',
+  `redirect` varchar(50) NOT NULL DEFAULT '' COMMENT '跳转地址',
+  `perms` varchar(50) NOT NULL DEFAULT '' COMMENT '权限地址',
+  `component` varchar(100) NOT NULL DEFAULT '' COMMENT '组件路径',
+  `icon` varchar(30) NOT NULL DEFAULT '' COMMENT '图标',
+  `title` varchar(20) NOT NULL DEFAULT '' COMMENT '菜单名称',
+  `link` varchar(255) NOT NULL DEFAULT '' COMMENT '外链地址',
+  `is_affix` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否固定页签 1=是 0=否',
+  `is_hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏 1=是 0=否',
+  `is_full` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否全屏 1=是 0=否',
+  `is_keepalive` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否缓存 1=是 0=否',
+  `sort` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

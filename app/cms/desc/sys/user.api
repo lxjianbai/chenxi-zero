@@ -1,0 +1,17 @@
+syntax = "v1"
+
+type (
+)
+
+@server(
+	group: sys/user
+	jwt: Auth
+)
+
+service cms{
+	@doc(
+		summary: "用户菜单"
+	)
+	@handler getUserMenus
+	get /user/menus returns([]*Menu)
+}

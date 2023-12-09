@@ -1,0 +1,25 @@
+Name: api
+Host: 0.0.0.0
+Port: 10000
+
+Log:
+  Model: console
+  Level: debug
+  TimeFormat: "2006-01-02 15:04:05"
+
+CloudMysql:
+  Host: "rm-wz9qxg024ql767452to.mysql.rds.aliyuncs.com"
+  Port: 3306
+  DbName: "new_game"
+  Username: "cloud_game"
+  Password: "JDkL7TYGwPSZnEbc"
+  LogMode: "dev"
+  LogZap: false
+
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass:
+
+Nats:
+  Host: nats://127.0.0.1:4222

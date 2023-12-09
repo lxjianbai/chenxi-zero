@@ -1,0 +1,21 @@
+CREATE TABLE `yang_accountbook` (
+  `id` bigint(32) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `member_id` int(32) NOT NULL DEFAULT '0' COMMENT '用户id',
+  `currency_id` int(10) NOT NULL DEFAULT '0' COMMENT '币种',
+  `type` mediumint(5) NOT NULL DEFAULT '0' COMMENT '类型id',
+  `content` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '内容(存入语言包)',
+  `number_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '收入=1/支出=2',
+  `current` decimal(50,15) NOT NULL DEFAULT '0.000000000000000' COMMENT '变动前数量',
+  `number` decimal(50,15) NOT NULL DEFAULT '0.000000000000000' COMMENT '变动的数量',
+  `after` decimal(50,15) DEFAULT NULL COMMENT '变动后的数量',
+  `fee` decimal(50,15) NOT NULL DEFAULT '0.000000000000000' COMMENT '手续费',
+  `to_member_id` int(32) NOT NULL DEFAULT '0' COMMENT '目标对象ID',
+  `add_time` int(11) NOT NULL DEFAULT '0' COMMENT '添加时间',
+  `third_id` bigint(15) NOT NULL DEFAULT '0' COMMENT '第三方ID',
+  `ad_remark` varchar(100) CHARACTER SET utf8 DEFAULT '' COMMENT '管理员备注',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `onliny_one` (`member_id`,`currency_id`,`type`,`number_type`,`number`,`to_member_id`,`third_id`,`add_time`,`fee`,`ad_remark`) USING BTREE,
+  KEY `member_type` (`member_id`,`type`) USING BTREE,
+  KEY `member_id` (`member_id`) USING BTREE,
+  KEY `member_currency_type` (`member_id`,`currency_id`,`number_type`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=890516 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='账本记录表';

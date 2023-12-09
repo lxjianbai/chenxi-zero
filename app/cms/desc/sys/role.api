@@ -1,0 +1,68 @@
+syntax = "v1"
+import (
+	"../common/common.api"
+)
+type (
+	SysRole {
+		Id        int64  `json:"id,optional"`
+		Name      string `json:"name"`
+		UniqueKey string `json:"uniqueKey"`
+		Remark    string `json:"remark,optional"`
+		MenuIds   string `json:"menuIds"`
+		Status    uint8  `json:"status"`
+		CreatedAt string `json:"createdAt,optional" form:"-"`
+		UpdatedAt string `json:"updatedAt,optional" form:"-"`
+	}
+
+	GetRoleListRequest {
+		PaginationRequest
+		Name      string `form:"name,optional"`
+		UniqueKey string `form:"uniqueKey,optional"`
+	}
+
+	GetRoleListResponse {
+		PaginationResponse
+		List []*SysRole `json:"list"`
+	}
+
+	DestroyRoleRequest {
+		Id int64 `form:"id"`
+	}
+)
+
+@server(
+	group: sys/role
+	jwt: Auth
+)
+
+service cms{
+	@doc(
+		summary: "角色列表"
+	)
+	@handler getRoleList
+	get /sys/role/list(GetRoleListRequest) returns(GetRoleListResponse)
+
+	@doc(
+		summary: "新增角色"
+	)
+	@handler addRole
+	post /sys/role/add(SysRole)
+
+	@doc(
+		summary: "编辑角色"
+	)
+	@handler updateRole
+	put /sys/role/update(SysRole)
+
+	@doc(
+		summary: "删除角色"
+	)
+	@handler destroyRole
+	delete /sys/role/destroy(DestroyRoleRequest)
+
+	@doc(
+		summary: "更改角色状态"
+	)
+	@handler changeRoleStatus
+	put /sys/role/status(ChangeStatusRequest)
+}

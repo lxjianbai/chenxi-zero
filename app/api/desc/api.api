@@ -1,0 +1,7 @@
+syntax = "v1"
+
+import (
+	"common/common.api"
+	"auth/auth.api"
+	"user/user.api"
+)

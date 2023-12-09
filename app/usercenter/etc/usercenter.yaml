@@ -1,0 +1,28 @@
+Name: usercenter.rpc
+ListenOn: 0.0.0.0:2000
+Mode: dev 
+
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: usercenter.rpc
+
+Log:
+  Model: console
+  Level: debug
+  TimeFormat: "2006-01-02 15:04:05"
+
+CloudMysql:
+  Host: "rm-wz9qxg024ql767452to.mysql.rds.aliyuncs.com"
+  Port: 3306
+  DbName: "new_game"
+  Username: "cloud_game"
+  Password: "JDkL7TYGwPSZnEbc"
+  LogMode: "dev"
+  LogZap: false
+
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass:
+  Key : usercenter-rpc

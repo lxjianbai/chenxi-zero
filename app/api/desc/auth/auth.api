@@ -1,0 +1,28 @@
+syntax = "v1"
+
+type (
+	LoginRequest {
+		Account  string `json:"account"`
+		Password string `json:"password"`
+	}
+
+	LoginResponse {
+		Token      string `json:"token"`
+		Id         uint64 `json:"id"`
+		Name       string `json:"name"`
+		Avatar     string `json:"avatar"`
+		GoodNumber string `json:"goodNumber"`
+	}
+)
+
+@server(
+	group: auth
+)
+
+service api{
+	@doc(
+		summary: "登录"
+	)
+	@handler login
+	post /auth/login(LoginRequest) returns(LoginResponse)
+}

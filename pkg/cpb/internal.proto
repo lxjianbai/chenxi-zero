@@ -1,0 +1,35 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// proto 包名
+package cpb;
+
+import "enum.proto";
+// 生成 golang 代码后的包名
+option go_package = "./cpb";
+
+message AuthCache {
+    string tokenKey = 1;
+    string tokenValue = 2;
+    uint32 memberId = 3;
+}
+
+// 活跃等级事件参数
+message ActiveLevelEvent {
+    // 事件类型
+    ActiveLevelEnum event = 1;
+    // 来源id
+    uint32 sourceUid = 2;
+    // 数量
+    uint32 num = 3;
+    // 中奖来源类型
+    WinPrizeRewardSourceTypeEnum type = 4;
+    // 日期
+    string Ymd = 5;
+    // 比例
+    float rate = 6;
+    // pm
+    uint32 pm = 7;
+    string remark = 8;
+    string linkId = 9;
+}

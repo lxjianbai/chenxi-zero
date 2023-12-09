@@ -1,0 +1,6 @@
+CREATE TABLE `yang_accountbook_type` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '中文备注',
+  `language_pack` varchar(32) CHARACTER SET utf8 NOT NULL DEFAULT '' COMMENT '语言包',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='账本类型表';

@@ -1,0 +1,18 @@
+syntax = "v1"
+
+type (
+	PaginationRequest {
+		PageNum  int64 `form:"pageNum"  validate:"number,gte=1"  label:"页数"`
+		PageSize int64 `form:"pageSize" validate:"number,gte=1"  label:"条数"`
+	}
+	PaginationResponse {
+		PageNum  int64 `json:"pageNum"`
+		PageSize int64 `json:"pageSize"`
+		Total    int64 `json:"total"`
+	}
+
+	ChangeStatusRequest {
+		Id     int64 `json:"id"`
+		Status uint8 `json:"status"`
+	}
+)

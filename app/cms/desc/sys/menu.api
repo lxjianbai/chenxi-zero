@@ -1,0 +1,68 @@
+syntax = "v1"
+
+type (
+	Menu {
+		Id        int64    `json:"id,optional"`
+		Pid       int64    `json:"pid"`
+		Type      uint8    `json:"type"`
+		Path      string   `json:"path,optional"`
+		Name      string   `json:"name,optional"`
+		Perms     string   `json:"perms,optional"`
+		Sort      int64    `json:"sort,optional"`
+		Redirect  string   `json:"redirect,optional"`
+		Component string   `json:"component,optional"`
+		Meta      MenuMeta `json:"meta"`
+		Children  []*Menu  `json:"children,optional"`
+	}
+
+	MenuMeta {
+		Icon        string `json:"icon,optional"`
+		Title       string `json:"title"`
+		ActiveMenu  string `json:"activeMenu,optional"`
+		IsLink      string `json:"isLink,optional"`
+		IsHide      uint8  `json:"isHide"`
+		IsFull      uint8  `json:"isFull"`
+		IsAffix     uint8  `json:"isAffix"`
+		IsKeepAlive uint8  `json:"isKeepAlive"`
+	}
+
+	GetMenuListRequest {
+		Title string `form:"title,optional"`
+		Name  string `form:"name,optional"`
+	}
+
+	DestroyMenuRequest {
+		Id int64 `form:"id"`
+	}
+)
+
+@server(
+	group: sys/menu
+	jwt: Auth
+)
+
+service cms{
+	@doc(
+		summary: "菜单列表"
+	)
+	@handler getMenuList
+	get /sys/menu/list(GetMenuListRequest) returns([]*Menu)
+
+	@doc(
+		summary: "新增菜单"
+	)
+	@handler addMenu
+	post /sys/menu/add(Menu)
+
+	@doc(
+		summary: "编辑菜单"
+	)
+	@handler updateMenu
+	put /sys/menu/update(Menu)
+
+	@doc(
+		summary: "删除菜单"
+	)
+	@handler destroyMenu
+	delete /sys/menu/destroy(DestroyMenuRequest)
+}

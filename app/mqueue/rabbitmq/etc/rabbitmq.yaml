@@ -1,0 +1,32 @@
+Name: rabbitmq
+Host: 0.0.0.0
+Port: 20002
+
+Log:
+  Model: console
+  Level: debug
+  TimeFormat: "2006-01-02 15:04:05"
+
+CloudMysql:
+  Host: "rm-wz9qxg024ql767452to.mysql.rds.aliyuncs.com"
+  Port: 3306
+  DbName: "new_game"
+  Username: "cloud_game"
+  Password: "JDkL7TYGwPSZnEbc"
+  LogMode: "dev"
+  LogZap: false
+
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass:
+
+TestListenerConf:
+  Username: guest
+  Password: guest
+  Host: 127.0.0.1
+  Port: 5672
+  VHost: ylgy_RabbitMQ
+  ListenerQueues:
+    -
+      Name: task_queue_yl

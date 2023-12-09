@@ -1,0 +1,26 @@
+syntax = "v1"
+
+type (
+	LoginRequest {
+		Account  string `json:"account"`
+		Password string `json:"password"`
+	}
+
+	LoginResponse {
+		Token  string `json:"token"`
+		Name   string `json:"name"`
+		Avatar string `json:"avatar"`
+	}
+)
+
+@server(
+	group: sys/login
+)
+
+service cms{
+	@doc(
+		summary: "登录"
+	)
+	@handler login
+	post /login(LoginRequest) returns(LoginResponse)
+}

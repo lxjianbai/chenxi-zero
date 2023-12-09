@@ -1,0 +1,24 @@
+Name: crontab
+Host: 0.0.0.0
+Port: 3003
+Mode: dev
+
+Log:
+  ServiceName: crontab
+  Model: console
+  Level: debug
+  TimeFormat: "2006-01-02 15:04:05"
+
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass:
+
+CloudMysql:
+  Host: "rm-wz9qxg024ql767452to.mysql.rds.aliyuncs.com"
+  Port: 3306
+  DbName: "new_game"
+  Username: "cloud_game"
+  Password: "JDkL7TYGwPSZnEbc"
+  LogMode: "dev"
+  LogZap: false

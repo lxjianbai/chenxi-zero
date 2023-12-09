@@ -1,0 +1,84 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// proto 包名
+package cpb;
+
+// 生成 golang 代码后的包名
+option go_package = "./cpb";
+
+enum EitherStatusEnum {
+    False = 0;
+    True = 1;
+}
+
+enum CurrencyEnum {
+  CurrencyUnknow = 0;
+  // 云豆
+  CurrencyBean = 1;
+  // 银币
+  CurrencySilver = 2;
+  // 人民币
+  CurrencyMoney = 3;
+}
+
+// 资产操作类型
+enum OperatingCurrencyEnum {
+  OperatingCurrencyUnknow = 0;
+  OperatingCurrencyIn = 1;
+  OperatingCurrencyOut = 2;
+}
+
+enum ActiveLevelEnum {
+    unknow = 0;
+    reward_source = 1;
+    bind_new_user = 2;
+    watch_advert = 3;
+    buy_vip = 4;
+    compound_build = 5;
+    login = 6;
+}
+
+
+enum WinPrizeRewardSourceTypeEnum {
+    WinPrizeRewardSourceTypeEnumUnknow = 0;
+    WinPrizeRewardSourceTypeEnumBean = 1;
+    WinPrizeRewardSourceTypeEnumFragment = 2;
+}
+
+// 用户删除状态
+enum UserDeleteStatusEnum {
+  UserDeleteStatusEnumNormal = 0; // 正常
+  UserDeleteStatusEnumDelete = 1; // 删除
+}
+
+enum AccountbookEnum {
+  AccountbookEnumUnknow = 0;
+  AccountbookEnumLotteryType = 1;
+}
+
+enum SysUserStatusEnum {
+  SysUserStatusEnumUnknow = 0;
+  SysUserStatusEnumNormal = 1;
+  SysUserStatusEnumLock = 2;
+}
+
+// 通用开关状态枚举
+enum StatusSwitchEnum {
+  StatusSwitch_Close = 0; //关闭
+  StatusSwitch_Open = 1; // 开启
+}
+
+// 通用是否状态枚举
+enum StatusOrEnum {
+  StatusOr_Flase = 0; //否
+  StatusOr_True = 1; // 是
+}
+
+// 系统菜单类型
+enum SysMenuTypeEnum {
+  SysMenuType_Unknow = 0;
+  SysMenuType_Dir = 1; // 目录
+  SysMenuType_Menu = 2; // 菜单
+  SysMenutype_Button = 3; // 按钮
+}

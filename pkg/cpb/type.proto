@@ -1,0 +1,33 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// proto 包名
+package cpb;
+
+import "enum.proto";
+
+// 生成 golang 代码后的包名
+option go_package = "./cpb";
+
+message OperatingCurrency {
+  // 用户id
+  uint32 memberId = 1;
+  // 资产id
+  uint32 currencyId = 2;
+  // 变动数量
+  double num = 3;
+  // 账本类型
+  uint32 typeId = 4;
+  // 收入、支出
+  OperatingCurrencyEnum numberType = 5;
+  // 第三方id
+  uint32 thirdId = 6;
+  // (减少资产时是否把扣除的放到冻结)(增加资产时是否把冻结的减少)，true:是，false:否(默认)
+  bool isFrozen = 7;
+  // 手续费数量(只有扣除时用到,num的数量不包括手续费数量的)
+  double fee = 8;
+  // 相对的用户id   目标对象ID(当时抽奖记录时候存储订单编号)
+  uint32 toMemberId = 9;
+  // 管理员备注（当抽奖记录时候存储抽奖奖券)
+  string adRemark = 10;
+}
